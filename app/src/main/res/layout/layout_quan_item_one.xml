@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/quan_item_one_logo"
+        app:failureImage="@mipmap/ic_launcher"
+        app:placeholderImage="@mipmap/ic_launcher"
+        android:layout_width="50dp"
+        android:layout_height="50dp" />
+
+    <RelativeLayout
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/quan_item_one_title"
+            android:text="好券推手"
+            android:textColor="#6e7ea4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:text="❤只有一条路不能选择那就是放弃的路❤\r\n那只有一条路不能拒绝那就是成长的路收益者宝妈一枚！\uD83D\uDC4D"
+            android:id="@+id/quan_item_one_content"
+            android:textColor="#333333"
+            android:layout_below="@id/quan_item_one_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <!--<android.support.text.emoji.widget.EmojiAppCompatTextView-->
+            <!--android:id="@+id/quan_item_one_test"-->
+            <!--android:text="❤只有一条路不能选择那就是放弃的路❤\r\n那只有一条路不能拒绝那就收益者宝妈一枚！\uD83D\uDC4D"-->
+            <!--android:layout_below="@id/quan_item_one_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:textColor="#333333"-->
+            <!--/>-->
+
+        <LinearLayout
+            android:layout_below="@id/quan_item_one_content"
+            android:id="@+id/quan_item_one_images_video"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <android.support.v7.widget.RecyclerView
+            android:id="@+id/quan_item_one_images"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:id="@+id/quan_item_one_thumb"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp" />
+                <com.huotu.android.couponsleague.widget.video.SampleVideo
+                    android:id="@+id/quan_item_one_video"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"/>
+            </RelativeLayout>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/quan_item_one_time"
+            android:layout_below="@id/quan_item_one_images_video"
+            android:layout_alignParentLeft="true"
+            android:text="2018.05.12 15:20"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/quan_item_one_count"
+            android:layout_alignTop="@id/quan_item_one_time"
+            android:layout_toRightOf="@id/quan_item_one_time"
+            android:layout_width="wrap_content"
+            android:text="已被转发200次"
+            android:layout_height="wrap_content" />
+
+
+    </RelativeLayout>
+
+    </LinearLayout>
+
+    <View
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:background="#bababa"
+        android:layout_width="match_parent"
+        android:layout_height="1px" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:id="@+id/quan_item_one_save_image"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:src="@mipmap/ic_launcher"/>
+            <TextView
+                android:text="保存图片"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <View
+            android:layout_width="1px"
+            android:layout_height="30dp"
+            android:background="#bababa"/>
+        <LinearLayout
+            android:id="@+id/quan_item_one_share"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:src="@mipmap/ic_launcher"/>
+            <TextView
+                android:text="一键转发"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

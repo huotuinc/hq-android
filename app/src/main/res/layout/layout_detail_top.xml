@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:paddingLeft="10dp"
+    android:layout_height="wrap_content">
+    <TextView
+        android:id="@+id/detail_item_title"
+        android:text="asdfasd阿萨德法师法师打算发放阿是打发撒"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/detail_item_title"
+        android:id="@+id/detail_item_price"
+        android:text="30.25"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    
+    <TextView
+        android:text="销量44"
+        android:id="@+id/detail_item_count"
+        android:layout_alignTop="@id/detail_item_price"
+        android:layout_alignParentRight="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    
+    <TextView
+        android:layout_below="@id/detail_item_price"
+        android:layout_marginTop="5dp"
+        android:drawableLeft="@mipmap/quanprice"
+        android:text="￥25.23"
+        android:id="@+id/detail_item_price1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <RelativeLayout
+        android:layout_below="@id/detail_item_price1"
+        android:layout_width="match_parent"
+        android:gravity="center_vertical"
+        android:background="@mipmap/quankuan"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/detail_label1"
+            android:layout_alignBottom="@id/detail_quan"
+            android:text="￥"
+            android:layout_marginLeft="15dp"
+            android:textColor="#ff4b54"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:layout_toRightOf="@id/detail_label1"
+            android:id="@+id/detail_quan"
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="4dp"
+            android:text="5元"
+            android:textColor="#ff4b54"
+            android:textSize="24sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:layout_toRightOf="@id/detail_quan"
+            android:layout_alignBottom="@id/detail_quan"
+            android:id="@+id/detail_label2"
+            android:text="优惠券"
+            android:textColor="#ff4b54"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_below="@id/detail_label1"
+            android:layout_alignLeft="@id/detail_label1"
+            android:id="@+id/detail_time"
+            android:text="使用期限:2015.06.02-2018.06.18"
+            android:textColor="#9f9f9f"
+            android:layout_marginTop="5dp"
+            android:textSize="14sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        
+    </RelativeLayout>
+
+</RelativeLayout>

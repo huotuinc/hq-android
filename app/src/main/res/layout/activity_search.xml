@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:fitsSystemWindows="true"
+    android:clipToPadding="true"
+    android:background="@color/white"
+    android:layout_height="match_parent"
+    tools:context=".activity.SearchActivity">
+
+    <include android:id="@+id/search_header"
+        layout="@layout/layout_search_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <LinearLayout
+        app:layout_constraintTop_toBottomOf="@id/search_header"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        android:id="@+id/search_bar1"
+        android:gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:src="@mipmap/time"
+            android:layout_width="28dp"
+            android:layout_height="28dp" />
+        <TextView
+            android:layout_marginLeft="5dp"
+            android:text="最近搜索"
+            android:textColor="#bfbfbf"
+            android:textSize="16sp"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+        <ImageView
+            android:id="@+id/search_delete"
+            android:src="@mipmap/delete"
+            android:layout_width="27dp"
+            android:layout_height="27dp" />
+    </LinearLayout>
+
+    <me.gujun.android.taggroup.TagGroup
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:id="@+id/search_tags"
+        app:layout_constraintTop_toBottomOf="@id/search_bar1"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        app:atg_backgroundColor="#f3f3f3"
+        app:atg_textSize="14sp"
+        app:atg_verticalPadding="5dp"
+        app:atg_borderColor="#f3f3f3"
+        app:atg_verticalSpacing="5dp"
+        app:atg_textColor="#5b5b5b"/>
+
+
+    <LinearLayout
+        android:layout_marginTop="5dp"
+        app:layout_constraintTop_toBottomOf="@id/search_tags"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        android:id="@+id/search_bar2"
+        android:gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:src="@mipmap/hot"
+            android:layout_width="28dp"
+            android:layout_height="28dp" />
+        <TextView
+            android:layout_marginLeft="5dp"
+            android:text="热门搜索"
+            android:textColor="#bfbfbf"
+            android:textSize="16sp"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+    <me.gujun.android.taggroup.TagGroup
+        android:layout_marginRight="8dp"
+        android:layout_marginLeft="8dp"
+        android:id="@+id/search_tags_hot"
+        app:layout_constraintTop_toBottomOf="@id/search_bar2"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        app:atg_backgroundColor="#f3f3f3"
+        app:atg_borderColor="#f3f3f3"
+        app:atg_verticalSpacing="5dp"
+        app:atg_textSize="14sp"
+        app:atg_textColor="#5b5b5b"/>
+
+</android.support.constraint.ConstraintLayout>

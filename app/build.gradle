@@ -1,0 +1,107 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion 27
+    defaultConfig {
+        applicationId "com.huotu.android.couponsleague"
+        minSdkVersion 16
+        targetSdkVersion 27
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
+    signingConfigs {
+        config {
+            keyAlias 'huotucouponsleague'
+            keyPassword 'huotucouponsleague'
+            storeFile file('../keystore/key.jks')
+            storePassword 'huotucouponsleague'
+        }
+    }
+
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+
+
+
+    buildTypes {
+        debug {
+            signingConfig signingConfigs.config
+        }
+
+        release {
+            signingConfig signingConfigs.config
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'com.android.support:appcompat-v7:27.1.1'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.0'
+    implementation 'com.android.support:design:27.1.1'
+    /*tag标签库*/
+    implementation 'me.gujun.android.taggroup:library:1.4@aar'
+    /*文件下载库 */
+    implementation 'com.liulishuo.filedownloader:library:1.7.4'
+    /* 视频库 */
+    implementation 'com.shuyu:GSYVideoPlayer:4.1.3'
+    implementation 'com.shuyu:gsyVideoPlayer-java:4.1.3'
+    //implementation 'com.shuyu:gsyVideoPlayer-ex_so:4.1.3'
+
+    //根据你的需求
+    //implementation 'com.shuyu:gsyVideoPlayer-armv5:4.1.3'
+    implementation 'com.shuyu:gsyVideoPlayer-armv7a:4.1.3'
+    //implementation 'com.shuyu:gsyVideoPlayer-arm64:4.1.3'
+    //implementation 'com.shuyu:gsyVideoPlayer-x64:4.1.3'
+    //implementation 'com.shuyu:gsyVideoPlayer-x86:4.1.3'
+
+    /*emoji库*/
+    implementation "com.android.support:support-emoji-appcompat:27.1.1"
+    implementation "com.android.support:support-emoji-bundled:27.1.1"
+
+    /*banner组件库*/
+    implementation 'com.youth.banner:banner:1.4.10'
+    /*加载动画组件库*/
+    implementation 'com.wang.avi:library:2.1.3'
+    /*倒计时组件库*/
+    implementation 'com.github.iwgang:countdownview:2.1.6'
+    /*recyckerview库*/
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.38'
+    /*图片加载库*/
+    implementation 'com.facebook.fresco:fresco:1.9.0'
+    /*网络依赖*/
+    implementation 'com.squareup.retrofit2:retrofit:2.4.0'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.4.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
+    /*rxjava*/
+    implementation 'io.reactivex.rxjava2:rxandroid:2.0.2'
+    implementation 'io.reactivex.rxjava2:rxjava:2.1.9'
+    /*权限申请库*/
+    implementation('com.github.hotchemi:permissionsdispatcher:3.2.0') {
+        exclude module: "support-v13"
+    }
+    implementation 'com.android.support:support-v4:27.1.1'
+    kapt "com.github.hotchemi:permissionsdispatcher-processor:3.2.0"
+
+    /*监控内存泄露库*/
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.5.4'
+    releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
+
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+}

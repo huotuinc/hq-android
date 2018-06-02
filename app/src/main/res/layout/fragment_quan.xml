@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragment.QuanFragment">
+
+    <LinearLayout
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:id="@+id/quan_header"
+        android:paddingTop="10dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:gravity="center"
+            android:text="好券联盟"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <View
+            android:layout_marginTop="10dp"
+            android:background="#bababa"
+            android:layout_width="match_parent"
+            android:layout_height="1px"/>
+    </LinearLayout>
+
+
+
+    <android.support.design.widget.TabLayout
+        app:layout_constraintTop_toBottomOf="@id/quan_header"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:tabGravity="center"
+        app:tabMode="scrollable"
+        app:tabSelectedTextColor="#fe4c55"
+        app:tabIndicatorColor="#fe4c55"
+        app:tabIndicatorHeight="2dp"
+        app:tabTextColor="#383838"
+        app:tabTextAppearance="@android:style/TextAppearance.DeviceDefault.Medium"
+        app:tabPaddingStart="5dp"
+        app:tabPaddingEnd="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginLeft="5dp"
+        android:id="@+id/quan_tablayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </android.support.design.widget.TabLayout>
+
+    <View
+        android:id="@+id/quan_line"
+        app:layout_constraintTop_toBottomOf="@id/quan_tablayout"
+        android:background="#e1e1e1"
+        android:layout_width="match_parent"
+        android:layout_height="1px" />
+
+    <android.support.v4.view.ViewPager
+        app:layout_constraintTop_toBottomOf="@id/quan_line"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:id="@+id/quan_viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"/>
+
+</android.support.constraint.ConstraintLayout>

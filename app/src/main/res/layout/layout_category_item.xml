@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/category_item_logo"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:placeholderImage="@mipmap/ic_launcher"
+        app:placeholderImageScaleType="fitCenter"
+        app:actualImageScaleType="fitCenter"
+        app:roundAsCircle="true"
+        app:failureImage="@mipmap/ic_launcher"
+        app:failureImageScaleType="fitCenter"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
+    <TextView
+        android:layout_marginTop="2dp"
+        android:id="@+id/category_item_title"
+        android:text="safa"
+        android:textColor="#838383"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/category_item_logo"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+</android.support.constraint.ConstraintLayout>
