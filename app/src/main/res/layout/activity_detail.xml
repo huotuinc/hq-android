@@ -17,13 +17,14 @@
         <android.support.design.widget.CollapsingToolbarLayout
             android:layout_width="match_parent"
             android:layout_height="300dp"
-            app:contentScrim="@color/colorAccent"
+            app:contentScrim="@color/white"
             app:title=""
             app:titleEnabled="false"
-            app:statusBarScrim="@color/green"
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
             <com.facebook.drawee.view.SimpleDraweeView
+                app:layout_collapseParallaxMultiplier="0.6"
+                app:layout_collapseMode="parallax"
                 android:id="@+id/detail_image"
                 app:failureImage="@mipmap/ic_launcher"
                 app:placeholderImage="@mipmap/ic_launcher"
@@ -31,10 +32,27 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
 
-            <include layout="@layout/layout_header2"
+
+            <android.support.v7.widget.Toolbar
+                app:layout_collapseMode="pin"
                 android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize">
+
+
+                <ImageView
+                android:id="@+id/header_left_image"
+                android:layout_width="wrap_content"
+                android:paddingLeft="10dp"
+                android:paddingTop="8dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="8dp"
+                android:src="@mipmap/back2"
                 android:layout_height="wrap_content"
-                app:layout_collapseMode="pin"/>
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+            </android.support.v7.widget.Toolbar>
 
 
         </android.support.design.widget.CollapsingToolbarLayout>
@@ -44,6 +62,7 @@
 
 
     <android.support.v7.widget.RecyclerView
+        android:layout_marginBottom="50dp"
         android:id="@+id/detail_recyclerView"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         android:layout_width="match_parent"
