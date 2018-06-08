@@ -12,5 +12,9 @@
     <color name="red">#FF0000</color>
     <color name="green">#00ff00</color>
     <color name="transparent">#00000000</color>
+    <color name="textcolor">#ff4c52</color>
+    <color name="textcolor2">#898989</color>
+    <color name="line_color2">#e1e1e1</color>
+    <color name="textcolor3">#333333</color>
 
 </resources>

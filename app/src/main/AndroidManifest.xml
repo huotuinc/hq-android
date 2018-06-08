@@ -5,6 +5,7 @@
     <uses-permission android:name="android.permission.READ_SMS" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
@@ -33,7 +34,12 @@
         <activity android:name=".activity.MessageActivity" />
         <activity android:name=".activity.FavoriteActivity" />
         <activity android:name=".activity.SetActivity" />
-        <activity android:name=".activity.DetailActivity"></activity>
+        <activity android:name=".activity.DetailActivity" />
+        <activity android:name=".activity.OrderActivity" />
+        <activity android:name=".activity.InviteActivity" />
+        <activity android:name=".activity.MyMoneyActivity" />
+        <activity android:name=".activity.ChargeActivity" />
+        <activity android:name=".activity.AlipayActivity"></activity>
     </application>
 
 </manifest>

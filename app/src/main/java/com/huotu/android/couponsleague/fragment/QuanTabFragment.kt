@@ -72,7 +72,28 @@ class QuanTabFragment : BaseFragment<IPresenter>()
     override fun initView() {
 
         for(i in 0..10){
-            data.add(Quan("","","",null,"","11",0,"","",""))
+
+            var images = ArrayList<String>()
+            if(i==0) {
+                images.add("http://image.tkcm888.com/adSet_2018-06-04_d18eb67c0fbc43a398fc7c55f818122415281204839937212.png")
+            }else if(i==1) {
+                images.add("http://image.tkcm888.com/adSet_2018-06-04_d18eb67c0fbc43a398fc7c55f818122415281204839937212.png")
+                images.add("http://image.tkcm888.com/adSet_2018-06-04_d18eb67c0fbc43a398fc7c55f818122415281204839937212.png")
+            }else if(i==2){
+                images.add("http://image.tkcm888.com/adSet_2018-06-04_d18eb67c0fbc43a398fc7c55f818122415281204839937212.png")
+                images.add("http://image.tkcm888.com/adSet_2018-06-04_d18eb67c0fbc43a398fc7c55f818122415281204839937212.png")
+                images.add("http://image.tkcm888.com/adSet_2018-05-31_56440f86ea1d4d60a9a4d725e26e62c015277545962763144.png")
+            }else if(i>3){
+                images.add("http://image.tkcm888.com/adSet_2018-06-04_d18eb67c0fbc43a398fc7c55f818122415281204839937212.png")
+                images.add("http://image.tkcm888.com/adSet_2018-06-04_d18eb67c0fbc43a398fc7c55f818122415281204839937212.png")
+                images.add("http://image.tkcm888.com/adSet_2018-05-31_56440f86ea1d4d60a9a4d725e26e62c015277545962763144.png")
+                images.add("http://image.tkcm888.com/adSet_2018-05-31_a13475823f524d5f8b3b9480673e339915277602221601122.png")
+            }
+
+            data.add(Quan("","","❤只有一条路不不能选择不能选选择不能选择不能选选择不能选选择不能选选择不能选选择不能选选择不能选" +
+                    "择能不能选择不能选择选不能选择不能选择不能选择不能选择不能选" +
+                    "择不能选择择那就是放弃的路❤\r\n那只有一条路不能拒绝那就是成长的路收益者宝妈一枚！\uD83D\uDC4D",
+                    images,"","11",0,"","",""))
         }
 
         quanAdapter = QuanAdapter(data)

@@ -7,6 +7,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragment.MyFragment">
 
+
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -48,6 +49,7 @@
 
 
                 <FrameLayout
+                    android:paddingTop="0dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
                 <com.facebook.drawee.view.SimpleDraweeView
@@ -121,6 +123,28 @@
         </android.support.design.widget.CollapsingToolbarLayout>
 
     </android.support.design.widget.AppBarLayout>
+
+    <LinearLayout
+        android:visibility="visible"
+        android:id="@+id/my_lay_tip"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        android:layout_gravity="top"
+        android:gravity="center"
+        android:background="#009a44"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:id="@+id/my_tip"
+            android:drawablePadding="3dp"
+            android:drawableLeft="@mipmap/tip"
+            android:text="点击进入完成微信号绑定"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
 
 
     <android.support.v4.widget.NestedScrollView
@@ -282,6 +306,8 @@
         android:layout_height="wrap_content">
 
         <LinearLayout
+            android:id="@+id/my_lay_order"
+            android:background="@drawable/style_my_lay_bg"
             android:gravity="center"
             android:layout_weight="1"
             android:orientation="vertical"
@@ -302,6 +328,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:background="@drawable/style_my_lay_bg"
             android:gravity="center"
             android:layout_weight="1"
             android:orientation="vertical"
@@ -322,6 +349,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:background="@drawable/style_my_lay_bg"
             android:gravity="center"
             android:layout_weight="1"
             android:orientation="vertical"
@@ -342,6 +370,8 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/my_lay_zhuan"
+            android:background="@drawable/style_my_lay_bg"
             android:gravity="center"
             android:layout_weight="1"
             android:orientation="vertical"
@@ -368,16 +398,18 @@
     </LinearLayout>
 
             <LinearLayout
-        android:layout_marginTop="25dp"
-        android:id="@+id/my_list"
-        android:layout_below="@id/my_menu"
-        android:orientation="vertical"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+            android:layout_marginTop="25dp"
+            android:id="@+id/my_list"
+            android:layout_below="@id/my_menu"
+            android:orientation="vertical"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
         <LinearLayout
+            android:id="@+id/my_lay_invite"
+            android:background="@drawable/style_my_lay_bg"
             android:gravity="center_vertical"
             android:paddingRight="0dp"
             android:orientation="horizontal"
@@ -411,8 +443,10 @@
             android:layout_height="1dp" />
 
         <LinearLayout
+            android:id="@+id/my_lay_favorite"
             android:gravity="center_vertical"
             android:padding="0dp"
+            android:background="@drawable/style_my_lay_bg"
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -443,6 +477,8 @@
             android:layout_height="1dp" />
 
         <LinearLayout
+            android:background="@drawable/style_my_lay_bg"
+            android:id="@+id/my_lay_message"
             android:gravity="center_vertical"
             android:padding="0dp"
             android:orientation="horizontal"
@@ -475,6 +511,7 @@
             android:layout_height="1dp" />
 
         <LinearLayout
+            android:background="@drawable/style_my_lay_bg"
             android:gravity="center_vertical"
             android:padding="0dp"
             android:orientation="horizontal"
@@ -507,6 +544,7 @@
             android:layout_height="1dp" />
 
         <LinearLayout
+            android:background="@drawable/style_my_lay_bg"
             android:gravity="center_vertical"
             android:padding="0dp"
             android:orientation="horizontal"

@@ -15,9 +15,10 @@ import com.huotu.android.couponsleague.mvp.IView
 import com.huotu.android.couponsleague.utils.StatusBarUtils
 import com.huotu.android.couponsleague.utils.newIntent
 import com.huotu.android.couponsleague.utils.showToast
+import com.trello.rxlifecycle2.components.support.RxAppCompatActivity
 
 
-open class BaseActivity<T> : AppCompatActivity() , IView<T> {
+open class BaseActivity<T> : RxAppCompatActivity() , IView<T> {
 
     var isWhite:Boolean=true
 
@@ -84,11 +85,10 @@ open class BaseActivity<T> : AppCompatActivity() , IView<T> {
      * @return
      */
     protected fun processCommonErrorCode(code :Int ,  msg:String? ): Boolean {
-        if (//apiResult.getResultCode() == ApiResultCodeEnum.PARAMETER_ERROR.getCode() ||
-        //apiResult.getResultCode() == ApiResultCodeEnum.SIGN_NOT_PASS.getCode() ||
-        //apiResult.getResultCode() == ApiResultCodeEnum.SIGN_ERROR .getCode()  ||
-                code == ApiResultCodeEnum.TOKEN_ERROR.code ) {
-            //toast( apiResult.getResultMsg());
+        if (code == ApiResultCodeEnum.USER_NO_LOGIN.code ||
+            code == ApiResultCodeEnum.USER_FREEZE.code ||
+            code == ApiResultCodeEnum.USER_NO_LOGIN.code  ) {
+
             toast(Constants.MESSAGE_TOKEN_LOST)
 
             //EventBus.getDefault().post(LogoutEvent())
@@ -100,9 +100,9 @@ open class BaseActivity<T> : AppCompatActivity() , IView<T> {
     }
 
     protected fun isLogin(): Boolean {
-        return if ( BaseApplication.instance!!.variable.userBean == null
-                || BaseApplication.instance!!.variable.userBean!!.userId == 0L) false
-                else true
+        return return !(BaseApplication.instance!!.variable.userBean == null
+                        || BaseApplication.instance!!.variable.userBean!!.Token == ""
+                        || BaseApplication.instance!!.variable.userBean!!.UserId == 0L)
     }
 
 }

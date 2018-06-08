@@ -1,7 +1,8 @@
 package com.huotu.android.couponsleague.bean
 
-data class UserBean (var userId :Long ,
-                     var userName:String ,
-                     var userToken:String,
-                     var merchantId:Int ,
-                     var headimg : String )
+data class UserBean (var UserId :Long ,
+                     var LoginName:String ,
+                     var WxNickName:String,
+                     var Token:String,
+                     var InviteCode:String="" ,
+                     var WxHeadImg : String )

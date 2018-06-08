@@ -19,8 +19,7 @@
         android:layout_height="50dp" />
 
     <RelativeLayout
-        android:layout_weight="1"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <TextView
@@ -30,22 +29,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
-        <TextView
-            android:text="❤只有一条路不能选择那就是放弃的路❤\r\n那只有一条路不能拒绝那就是成长的路收益者宝妈一枚！\uD83D\uDC4D"
+        <com.huotu.android.couponsleague.widget.ExpandableTextView
             android:id="@+id/quan_item_one_content"
-            android:textColor="#333333"
             android:layout_below="@id/quan_item_one_title"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <!--<android.support.text.emoji.widget.EmojiAppCompatTextView-->
-            <!--android:id="@+id/quan_item_one_test"-->
-            <!--android:text="❤只有一条路不能选择那就是放弃的路❤\r\n那只有一条路不能拒绝那就收益者宝妈一枚！\uD83D\uDC4D"-->
-            <!--android:layout_below="@id/quan_item_one_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:textColor="#333333"-->
-            <!--/>-->
+            android:layout_height="wrap_content"
+            app:maxCollapsedLines="6"
+            app:DrawableAndTextGravity="left"
+            app:expandCollapseTextColor="@color/colorPrimary"
+            app:showExpandCollapseDrawable="false"
+            app:contentTextColor="@color/textcolor3"
+            app:contentTextSize="16"/>
 
         <LinearLayout
             android:layout_below="@id/quan_item_one_content"
@@ -61,11 +55,11 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-                <ImageView
-                    android:id="@+id/quan_item_one_thumb"
-                    android:layout_width="match_parent"
-                    android:layout_height="150dp" />
-                <com.huotu.android.couponsleague.widget.video.SampleVideo
+                <!--<ImageView-->
+                    <!--android:id="@+id/quan_item_one_thumb"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="150dp" />-->
+                <com.huotu.android.couponsleague.widget.video.SampleCoverVideo
                     android:id="@+id/quan_item_one_video"
                     android:layout_width="match_parent"
                     android:layout_height="150dp"/>
@@ -112,6 +106,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content">
             <ImageView
+                android:id="@+id/quan_item_one_save_logo"
                 android:layout_width="16dp"
                 android:layout_height="16dp"
                 android:src="@mipmap/ic_launcher"/>

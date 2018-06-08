@@ -8,7 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 
 import com.huotu.android.couponsleague.R
-import com.huotu.android.couponsleague.activity.SetActivity
+import com.huotu.android.couponsleague.activity.*
 import com.huotu.android.couponsleague.base.BaseFragment
 import com.huotu.android.couponsleague.mvp.IPresenter
 import com.huotu.android.couponsleague.utils.newIntent
@@ -37,10 +37,13 @@ class MyFragment : BaseFragment<IPresenter>() , View.OnClickListener {
         }
     }
 
-
-
     override fun initView() {
         my_setting.setOnClickListener(this)
+        my_lay_order.setOnClickListener(this)
+        my_lay_favorite.setOnClickListener(this)
+        my_lay_message.setOnClickListener(this)
+        my_lay_invite.setOnClickListener(this)
+        my_lay_zhuan.setOnClickListener(this)
     }
 
     override fun fetchData() {
@@ -56,6 +59,21 @@ class MyFragment : BaseFragment<IPresenter>() , View.OnClickListener {
         when(v!!.id){
             R.id.my_setting->{
                 newIntent<SetActivity>()
+            }
+            R.id.my_lay_order->{
+                newIntent<OrderActivity>()
+            }
+            R.id.my_lay_favorite->{
+                newIntent<FavoriteActivity>()
+            }
+            R.id.my_lay_message->{
+                newIntent<MessageActivity>()
+            }
+            R.id.my_lay_invite->{
+                newIntent<InviteActivity>()
+            }
+            R.id.my_lay_zhuan->{
+                newIntent<MyMoneyActivity>()
             }
         }
     }

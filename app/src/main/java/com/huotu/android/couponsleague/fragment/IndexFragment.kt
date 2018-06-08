@@ -17,9 +17,14 @@ import com.huotu.android.couponsleague.activity.FavoriteActivity
 import com.huotu.android.couponsleague.activity.MessageActivity
 import com.huotu.android.couponsleague.activity.SearchActivity
 import com.huotu.android.couponsleague.base.BaseFragment
+import com.huotu.android.couponsleague.bean.KeyValue
 import com.huotu.android.couponsleague.mvp.IPresenter
+import com.huotu.android.couponsleague.utils.KeybordUtils
 import com.huotu.android.couponsleague.utils.newIntent
+import com.huotu.android.couponsleague.utils.newIntentForLogin
+import com.huotu.android.couponsleague.utils.showToast
 import com.huotu.android.couponsleague.widget.FrescoImageLoader
+import com.huotu.android.couponsleague.widget.SelectDialog
 import com.youth.banner.Banner
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_index.*
@@ -36,7 +41,8 @@ import kotlinx.android.synthetic.main.layout_header.*
  *
  */
 class IndexFragment : BaseFragment<IPresenter>()
-        , SwipeRefreshLayout.OnRefreshListener , View.OnClickListener {
+        , SwipeRefreshLayout.OnRefreshListener
+        , View.OnClickListener {
 
     var category = ArrayList<String>()
     var fragments = ArrayList<BaseFragment<IPresenter>>()
@@ -52,6 +58,8 @@ class IndexFragment : BaseFragment<IPresenter>()
     override fun initView() {
         header_search.setOnClickListener(this)
         header_right_image.setOnClickListener(this)
+        header_left_lay.setOnClickListener(this)
+        index_more.setOnClickListener(this)
 
         initFragments()
 
@@ -111,11 +119,37 @@ class IndexFragment : BaseFragment<IPresenter>()
                 newIntent<SearchActivity>()
             }
             R.id.header_right_image->{
-                newIntent<MessageActivity>()
-                newIntent<FavoriteActivity>()
+                newIntentForLogin<FavoriteActivity>()
+            }
+            R.id.header_left_lay->{
+                selectPlat()
+            }
+            R.id.index_more->{
+                showCategorys()
             }
         }
     }
+
+    private fun showCategorys(){
+        index_category.visibility = if( index_category.visibility == View.VISIBLE ) View.GONE else View.VISIBLE
+    }
+
+    private fun selectPlat(){
+//        var dialog = SelectDialog(context!!)
+//        var data = ArrayList<KeyValue>()
+//        data.add(KeyValue(1,"拼多多"))
+//        data.add(KeyValue(2,"京东"))
+//        data.add(KeyValue(3,"天猫"))
+//        dialog.show(header_left_lay , data , this)
+        index_lay_platform.visibility= if( index_lay_platform.visibility == View.VISIBLE ) View.GONE else View.VISIBLE
+
+        if(index_lay_platform.visibility == View.VISIBLE) {
+            activity!!.window.attributes.alpha = 0.6f
+        }else{
+            activity!!.window.attributes.alpha=1f
+        }
+    }
+
 
     companion object {
         /**

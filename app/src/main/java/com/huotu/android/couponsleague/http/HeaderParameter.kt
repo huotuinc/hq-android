@@ -1,15 +1,13 @@
 package com.huotu.android.couponsleague.http
 
 import com.huotu.android.couponsleague.bean.Constants
+import com.huotu.android.couponsleague.bean.PlatTypeEnum
 
 data class HeaderParameter( var appVersion: String? = null,
             var hwid: String? = null,
             var mobileType: String? = null,
-            var osType :String = Constants.OS_TYPE,
-            var osVersion: String? = null,
+            var osType :Int = Constants.OS_TYPE,
+            var osVersion: String? = "",
             var userId: Long = 0,
             var userToken :String= "",
-            var merchantId :String= "1",
-            var cityCode: String? = null,
-            var cityName: String? = null,
-            var channelId: String? = "default")
+            var platType: Int = PlatTypeEnum.PINDUODUO.type )

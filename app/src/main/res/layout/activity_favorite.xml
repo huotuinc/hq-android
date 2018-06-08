@@ -39,12 +39,12 @@
         <TextView
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
-            android:paddingLeft="10dp"
+            android:paddingLeft="15dp"
             android:drawableLeft="@mipmap/unselected"
             android:id="@+id/favorite_select"
             android:layout_width="0dp"
             android:textSize="16sp"
-            android:text="选择的"
+            android:text="已选(0)"
             android:drawablePadding="5dp"
             android:textColor="@color/black"
             android:layout_weight="1"
@@ -63,5 +63,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
     </LinearLayout>
+
+
+    <com.wang.avi.AVLoadingIndicatorView
+        android:visibility="gone"
+        android:id="@+id/favorite_loading"
+        app:layout_constraintTop_toBottomOf="@id/favorite_header"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="0dp" />
 
 </android.support.constraint.ConstraintLayout>

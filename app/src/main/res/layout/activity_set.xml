@@ -29,7 +29,7 @@
         android:layout_height="wrap_content">
         <TextView
             android:text="清除缓存"
-            android:textColor="#acacae"
+            android:textColor="#333333"
             android:textSize="16sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
@@ -64,7 +64,7 @@
         android:layout_height="wrap_content">
         <TextView
             android:text="版本号"
-            android:textColor="#acacae"
+            android:textColor="#333333"
             android:textSize="16sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
@@ -73,7 +73,7 @@
             android:textColor="#8b8b8b"
             android:textSize="16sp"
             android:gravity="right"
-            android:text="1.0.0"
+            android:text="V1.0.0"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content" />
@@ -94,7 +94,7 @@
         android:layout_height="wrap_content">
         <TextView
             android:text="当前账号"
-            android:textColor="#acacae"
+            android:textColor="#333333"
             android:textSize="16sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
@@ -110,10 +110,78 @@
 
     </LinearLayout>
 
-    <TextView
+    <LinearLayout
+        android:background="@color/white"
+        android:layout_marginTop="10dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:paddingRight="10dp"
+        android:paddingLeft="10dp"
+        android:id="@+id/set_4"
         app:layout_constraintTop_toBottomOf="@id/set_3"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:text="绑定微信"
+            android:textColor="#333333"
+            android:textSize="16sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/set_wechat"
+            android:textColor="#8b8b8b"
+            android:textSize="16sp"
+            android:gravity="right"
+            android:text="立即绑定"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content" />
+
+        <ImageView
+            android:layout_marginLeft="10dp"
+            android:src="@mipmap/right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:background="@color/white"
+        android:layout_marginTop="10dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:paddingRight="10dp"
+        android:paddingLeft="10dp"
+        android:id="@+id/set_5"
+        app:layout_constraintTop_toBottomOf="@id/set_4"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:text="我的上级"
+            android:textColor="#333333"
+            android:textSize="16sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/set_parent"
+            android:textColor="#8b8b8b"
+            android:textSize="16sp"
+            android:gravity="right"
+            android:text="137*****3476"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+    <TextView
+        app:layout_constraintTop_toBottomOf="@id/set_5"
         android:background="@drawable/style_set_quit"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="30dp"
         android:layout_marginRight="10dp"
         android:layout_marginLeft="10dp"
         android:padding="10dp"

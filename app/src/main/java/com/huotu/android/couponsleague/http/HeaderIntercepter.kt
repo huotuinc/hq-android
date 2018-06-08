@@ -4,6 +4,7 @@ import android.os.Build
 import com.huotu.android.couponsleague.BuildConfig
 import com.huotu.android.couponsleague.base.BaseApplication
 import com.huotu.android.couponsleague.bean.Constants
+import com.huotu.android.couponsleague.bean.PlatTypeEnum
 import com.huotu.android.couponsleague.utils.SignUtils
 import okhttp3.*
 import java.net.URLDecoder
@@ -21,14 +22,11 @@ class HeaderIntercepter : Interceptor{
                 .addHeader("appVersion" , headerParameter.appVersion )
                 .addHeader("hwid" , headerParameter.hwid )
                 .addHeader("mobileType" , headerParameter.mobileType )
-                .addHeader("osType",headerParameter.osType)
+                .addHeader("osType",headerParameter.osType.toString())
                 .addHeader("osVersion" , headerParameter.osVersion)
                 .addHeader("userId" , headerParameter.userId.toString())
                 .addHeader("userToken" , headerParameter.userToken )
-                .addHeader("merchantId" , headerParameter.merchantId)
-                .addHeader("cityCode" , headerParameter.cityCode)
-                .addHeader("cityName" , headerParameter.cityName)
-                .addHeader("channelId" , headerParameter.channelId)
+                .addHeader("platType" , headerParameter.platType.toString())
                 .build()
 
         newRequest = addSignParameter(newRequest)
@@ -39,25 +37,21 @@ class HeaderIntercepter : Interceptor{
 
     private fun getHeaderParameter(): HeaderParameter {
 
-        val userid = if (BaseApplication.instance!!.variable.userBean == null) 0 else BaseApplication.instance!!.variable.userBean!!.userId
-        var userToken: String? = if (BaseApplication.instance!!.variable.userBean == null) "" else BaseApplication.instance!!.variable.userBean!!.userToken
+        val userid = if (BaseApplication.instance!!.variable.userBean == null) 0 else BaseApplication.instance!!.variable.userBean!!.UserId
+        var userToken: String? = if (BaseApplication.instance!!.variable.userBean == null) "" else BaseApplication.instance!!.variable.userBean!!.Token
         userToken = if (userToken == null) "" else userToken
-        val headerParameter = HeaderParameter()//BaseApplication.getInstance().variable.getHeaderParameter()
+        var platType = BaseApplication.instance!!.variable.platType
 
-        headerParameter.merchantId  = Constants.MerchantId
+        val headerParameter = HeaderParameter()
+
         headerParameter.appVersion = BuildConfig.VERSION_NAME
         headerParameter.userToken =userToken
         headerParameter.userId = userid
-
-        headerParameter.cityCode =""
-
-        headerParameter.cityName = ""
-
         headerParameter.hwid =  Build.ID
         headerParameter.mobileType = Build.MODEL
         headerParameter.osVersion = Build.VERSION.SDK_INT.toString()
         headerParameter.osType = Constants.OS_TYPE
-        headerParameter.channelId=Constants.ChannelId
+        headerParameter.platType=platType
 
         return headerParameter
     }
@@ -77,11 +71,9 @@ class HeaderIntercepter : Interceptor{
         var set = httpUrl.queryParameterNames()
 
         var maps = HashMap<String,String>()
-        maps.put("merchantId", getHeaderParameter(request , "merchantId"))
-        maps.put("userId" , getHeaderParameter(request, "userId"))
+        //maps.put("platType", getHeaderParameter(request , "platType"))
+        //maps.put("userId" , getHeaderParameter(request, "userId"))
         maps.put("userToken" , getHeaderParameter(request, "userToken"))
-        maps.put("cityCode" , getHeaderParameter(request, "cityCode"))
-        maps.put("cityName" , getHeaderParameter(request, "cityName"))
 
         val timestamp = System.currentTimeMillis()
         var sign = ""
@@ -135,11 +127,9 @@ class HeaderIntercepter : Interceptor{
         val maps = HashMap<String,String>()
 
 
-        maps.put("merchantId", getHeaderParameter(request, "merchantId"))
-        maps.put("userId", getHeaderParameter(request, "userId"))
+        //maps.put("platType", getHeaderParameter(request, "platType"))
+        //maps.put("userId", getHeaderParameter(request, "userId"))
         maps.put("userToken", getHeaderParameter(request, "userToken"))
-        maps.put("cityCode", getHeaderParameter(request, "cityCode"))
-        maps.put("cityName", getHeaderParameter(request, "cityName"))
 
         val pv = paramsStr2.split("&".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()
         for (p in pv) {

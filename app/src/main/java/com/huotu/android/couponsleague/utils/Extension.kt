@@ -18,6 +18,13 @@ fun Context.showToast(message:String): Toast {
         return toast
     }
 
+fun Fragment.showToast(message:String):Toast{
+    var toast : Toast = Toast.makeText(this.context , message, Toast.LENGTH_LONG)
+    toast.setGravity(Gravity.CENTER,0,0)
+    toast.show()
+    return toast
+}
+
     inline fun <reified T: Activity> Activity.newIntent() {
         val intent = Intent(this, T::class.java)
         startActivity(intent)
@@ -77,7 +84,7 @@ fun Context.showToast(message:String): Toast {
 
     inline fun<reified T: Activity> Activity.skipIntentForLogin(bundle: Bundle){
         if ( BaseApplication.instance!!.variable.userBean == null
-                || BaseApplication.instance!!.variable.userBean?.userId == 0L) {
+                || BaseApplication.instance!!.variable.userBean?.UserId == 0L) {
             skipIntent<LoginRegisterActivity>()
             return
         }
@@ -106,7 +113,7 @@ fun Context.showToast(message:String): Toast {
     inline fun<reified T: Activity> Activity.newIntentForLogin(){
 
         if ( BaseApplication.instance!!.variable.userBean == null
-                || BaseApplication.instance!!.variable.userBean?.userId == 0L) {
+                || BaseApplication.instance!!.variable.userBean?.UserId == 0L) {
             newIntent<LoginRegisterActivity>()
         }
         else {
@@ -117,7 +124,7 @@ fun Context.showToast(message:String): Toast {
     inline fun<reified T: Activity> Activity.newIntentForLogin(key : String, value:Long ){
 
         if ( BaseApplication.instance!!.variable.userBean == null
-                || BaseApplication.instance!!.variable.userBean?.userId == 0L) {
+                || BaseApplication.instance!!.variable.userBean?.UserId == 0L) {
             newIntent<LoginRegisterActivity>()
         }
         else {
@@ -128,7 +135,7 @@ fun Context.showToast(message:String): Toast {
     inline fun<reified T: Activity> Activity.newIntentForLogin(key : String, value:String ){
 
         if ( BaseApplication.instance!!.variable.userBean == null
-                || BaseApplication.instance!!.variable.userBean?.userId == 0L) {
+                || BaseApplication.instance!!.variable.userBean?.UserId == 0L) {
             newIntent<LoginRegisterActivity>()
         }
         else {
@@ -139,7 +146,7 @@ fun Context.showToast(message:String): Toast {
     inline fun<reified T: Activity> Activity.newIntentForLogin(bundle: Bundle){
 
         if ( BaseApplication.instance!!.variable.userBean == null
-                || BaseApplication.instance!!.variable.userBean?.userId == 0L) {
+                || BaseApplication.instance!!.variable.userBean?.UserId == 0L) {
             newIntent<LoginRegisterActivity>()
         }
         else {
@@ -148,7 +155,48 @@ fun Context.showToast(message:String): Toast {
     }
 
 
-    inline fun<reified T: Activity> Fragment.newIntent() {
-        val intent = Intent(this.context, T::class.java)
-        startActivity(intent)
+
+
+
+/******************************************************/
+
+inline fun<reified T: Activity> Fragment.newIntent() {
+    val intent = Intent(this.context, T::class.java)
+    startActivity(intent)
+}
+
+inline fun<reified T: Activity> Fragment.newIntent(key:String, value:Boolean=false){
+    val intent = Intent(this.context , T::class.java)
+    intent.putExtra(key,value)
+    startActivity(intent)
+}
+
+inline fun<reified T: Activity> Fragment.newIntent(key:String, value:Long ){
+    val intent = Intent(this.context , T::class.java)
+    intent.putExtra(key,value)
+    startActivity(intent)
+}
+
+inline fun<reified T: Activity> Fragment.newIntentForLogin(){
+
+    if ( BaseApplication.instance!!.variable.userBean == null
+            || BaseApplication.instance!!.variable.userBean?.Token==""
+            || BaseApplication.instance!!.variable.userBean?.UserId == 0L) {
+        newIntent<LoginRegisterActivity>()
     }
+    else {
+        newIntent<T>()
+    }
+}
+
+inline fun<reified T: Activity> Fragment.newIntentForLogin(key : String, value:Long ){
+
+    if ( BaseApplication.instance!!.variable.userBean == null
+            || BaseApplication.instance!!.variable.userBean?.Token==""
+            || BaseApplication.instance!!.variable.userBean?.UserId == 0L) {
+        newIntent<LoginRegisterActivity>()
+    }
+    else {
+        newIntent<T>(key , value)
+    }
+}

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/invite_item_image"
+        app:failureImage="@mipmap/ic_launcher"
+        app:failureImageScaleType="fitXY"
+        app:placeholderImageScaleType="fitXY"
+        app:placeholderImage="@mipmap/ic_launcher"
+        app:actualImageScaleType="fitXY"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <ImageView
+        android:id="@+id/invite_item_qrcode"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toTopOf="@id/invite_item_desc"
+        app:layout_constraintRight_toRightOf="@id/invite_item_image"
+        app:layout_constraintLeft_toLeftOf="@id/invite_item_image"
+        android:layout_width="90dp"
+        android:layout_height="90dp" />
+    <TextView
+        android:id="@+id/invite_item_desc"
+        android:text="扫码开启躺赢模式"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:singleLine="true"
+        android:paddingBottom="8dp"
+        android:paddingTop="8dp"
+        android:background="@drawable/shape_invite_desc"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintBottom_toBottomOf="@id/invite_item_image"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</android.support.constraint.ConstraintLayout>

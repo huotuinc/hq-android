@@ -12,7 +12,7 @@ class FavoriteAdapter(data :ArrayList<FavoriteBean>) :BaseQuickAdapter<FavoriteB
 
         helper!!.addOnClickListener(R.id.favorite_item_circle)
 
-        helper!!.getView<SimpleDraweeView>(R.id.good_item_image).setImageURI(item!!.logo)
+        helper!!.getView<SimpleDraweeView>(R.id.good_item_image).setImageURI(item!!.imgSrc)
 
 
         helper!!.setImageResource( R.id.favorite_item_circle , if( item!!.selected ) R.mipmap.selected else R.mipmap.unselected )

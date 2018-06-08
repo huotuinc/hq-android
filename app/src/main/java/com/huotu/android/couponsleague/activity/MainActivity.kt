@@ -2,6 +2,8 @@ package com.huotu.android.couponsleague.activity
 
 
 import android.os.Bundle
+import android.support.v4.content.ContextCompat
+import android.support.v4.view.ViewPager
 import android.view.KeyEvent
 import android.view.View
 import com.huotu.android.couponsleague.R
@@ -15,7 +17,7 @@ import com.huotu.android.couponsleague.utils.showToast
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.layout_bottom_menu.*
 
-class MainActivity : BaseActivity<MainContract.Presenter>() ,View.OnClickListener {
+class MainActivity : BaseActivity<MainContract.Presenter>() ,View.OnClickListener ,ViewPager.OnPageChangeListener{
 
     var fragments = ArrayList<BaseFragment<IPresenter>>()
     var fragmentAdapter : MainFragmentAdapter?=null
@@ -28,6 +30,7 @@ class MainActivity : BaseActivity<MainContract.Presenter>() ,View.OnClickListene
         bottom_benefit.setOnClickListener(this)
         bottom_quan.setOnClickListener(this)
         bottom_my.setOnClickListener(this)
+        main_viewPager.addOnPageChangeListener(this)
 
         initFragments()
     }
@@ -40,19 +43,19 @@ class MainActivity : BaseActivity<MainContract.Presenter>() ,View.OnClickListene
         when(v!!.id){
             R.id.bottom_index->{
                 main_viewPager.setCurrentItem(0,true)
-                showToast("index")
+                changeMenuIcon(0)
             }
             R.id.bottom_benefit->{
                 main_viewPager.setCurrentItem(1,true)
-                showToast("benefit")
+                changeMenuIcon(1)
             }
             R.id.bottom_quan->{
                 main_viewPager.setCurrentItem(2,true)
-                showToast("quan")
+                changeMenuIcon(2)
             }
             R.id.bottom_my->{
                 main_viewPager.setCurrentItem(3,true)
-                showToast("my")
+                changeMenuIcon(3)
             }
         }
     }
@@ -73,4 +76,27 @@ class MainActivity : BaseActivity<MainContract.Presenter>() ,View.OnClickListene
 
     }
 
+    override fun onPageScrollStateChanged(state: Int) {
+
+    }
+
+    override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
+
+    }
+
+    override fun onPageSelected(position: Int) {
+        changeMenuIcon(position)
+    }
+
+    private fun changeMenuIcon(index:Int) {
+
+        bottom_index_image.setImageResource(if (index == 0) R.mipmap.home2 else R.mipmap.home)
+        bottom_index_title.setTextColor(if(index==0) ContextCompat.getColor (this , R.color.textcolor) else ContextCompat.getColor(this , R.color.textcolor2 ))
+        bottom_benefit_image.setImageResource(if (index == 1) R.mipmap.benefit2 else R.mipmap.benefit)
+        bottom_benefit_title.setTextColor( if (index ==1) ContextCompat.getColor(this , R.color.textcolor) else ContextCompat.getColor(this, R.color.textcolor2) )
+        bottom_quan_image.setImageResource(if(index==2) R.mipmap.quan2 else R.mipmap.quan)
+        bottom_quan_title.setTextColor( if (index ==2) ContextCompat.getColor(this , R.color.textcolor) else ContextCompat.getColor(this, R.color.textcolor2) )
+        bottom_my_image.setImageResource(if(index==3)R.mipmap.my2 else  R.mipmap.my)
+        bottom_my_title.setTextColor( if (index ==3) ContextCompat.getColor(this , R.color.textcolor) else ContextCompat.getColor(this, R.color.textcolor2) )
+    }
 }

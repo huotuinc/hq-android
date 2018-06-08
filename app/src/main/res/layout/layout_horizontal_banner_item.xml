@@ -1,13 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:paddingRight="8dp"
+    android:background="@color/white"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     
     <com.facebook.drawee.view.SimpleDraweeView
         android:id="@+id/horizontal_banner_item_image"
         app:viewAspectRatio="1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_marginTop="4dp"
+        android:id="@+id/horizontal_banner_item_coupon"
         android:layout_width="wrap_content"
-        android:layout_height="150dp" />
+        android:layout_height="wrap_content"
+        android:text="券￥4"
+        android:textColor="#fe4c55"
+        android:background="@drawable/shape_quan_bg"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:paddingTop="2dp"
+        android:paddingBottom="2dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/horizontal_banner_item_image"/>
+
+    <LinearLayout
+        android:gravity="center"
+        android:background="@drawable/shape_quan_bg"
+        app:layout_constraintTop_toTopOf="@id/horizontal_banner_item_coupon"
+        app:layout_constraintLeft_toRightOf="@id/horizontal_banner_item_coupon"
+        android:orientation="horizontal"
+        android:layout_marginLeft="8dp"
+        android:paddingTop="2dp"
+        android:paddingBottom="2dp"
+        android:paddingRight="8dp"
+        android:paddingLeft="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:text="分享赚"
+            android:textColor="#fe4c55"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <ImageView
+            android:layout_width="16dp"
+            android:src="@mipmap/zhuan2"
+            android:layout_height="16dp" />
+        <TextView
+            android:textColor="#fe4c55"
+            android:text="1.2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_marginTop="5dp"
+        android:text="asdfasd撒旦法大赛"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:maxLines="2"
+        android:ellipsize="end"
+        android:id="@+id/horizontal_banner_item_title"
+        app:layout_constraintLeft_toLeftOf="@id/horizontal_banner_item_coupon"
+        app:layout_constraintTop_toBottomOf="@id/horizontal_banner_item_coupon"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        app:layout_constraintLeft_toLeftOf="@id/horizontal_banner_item_title"
+        app:layout_constraintTop_toBottomOf="@id/horizontal_banner_item_title"
+        android:id="@+id/horizontal_banner_item_price"
+        android:textColor="#fe4c55"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:text="￥125.55"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
 </android.support.constraint.ConstraintLayout>

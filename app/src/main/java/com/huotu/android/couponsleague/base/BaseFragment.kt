@@ -103,9 +103,11 @@ abstract class BaseFragment<T> : Fragment() , IView<T> {
     }
 
     protected fun processCommonErrorCode(code :Int ,  msg:String): Boolean {
-        if ( code == ApiResultCodeEnum.TOKEN_ERROR.code ) {
-            //toast( apiResult.getResultMsg());
-            toast(Constants.MESSAGE_TOKEN_LOST)
+        if ( code == ApiResultCodeEnum.USER_NO_LOGIN.code
+            ||code == ApiResultCodeEnum.USER_FREEZE.code
+            || code == ApiResultCodeEnum.USER_ILLEGAL.code ) {
+
+            toast( msg )
 
             //EventBus.getDefault().post(LogoutEvent())
 

@@ -106,6 +106,7 @@
                 android:text="请输入短信验证码"
                 android:textColor="#A1A1A1"
                 android:textSize="18sp"
+                android:paddingBottom="5dp"
                 android:layout_centerVertical="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />

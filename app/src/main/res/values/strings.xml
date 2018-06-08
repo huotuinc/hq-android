@@ -24,4 +24,9 @@
         </item>
     </string-array>
 
+
+
+    <string name="expand_string">全文</string>
+    <string name="collapsed_string">收起</string>
+
 </resources>

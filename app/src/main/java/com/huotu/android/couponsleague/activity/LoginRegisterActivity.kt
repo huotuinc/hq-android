@@ -14,10 +14,7 @@ import cn.iwgang.countdownview.CountdownView
 import com.huotu.android.couponsleague.R
 import com.huotu.android.couponsleague.base.BaseActivity
 import com.huotu.android.couponsleague.base.BaseApplication
-import com.huotu.android.couponsleague.bean.ApiResult
-import com.huotu.android.couponsleague.bean.ApiResultCodeEnum
-import com.huotu.android.couponsleague.bean.Constants
-import com.huotu.android.couponsleague.bean.UserBean
+import com.huotu.android.couponsleague.bean.*
 import com.huotu.android.couponsleague.mvp.contract.LoginContract
 import com.huotu.android.couponsleague.mvp.presenter.LoginPresenter
 import com.huotu.android.couponsleague.receiver.SmsReceiver
@@ -48,7 +45,6 @@ class LoginRegisterActivity : BaseActivity<LoginContract.Presenter>(),
 
         presenter = LoginPresenter(this)
 
-
         KeybordUtils.openKeybord(this , login_phone )
         login_code_hint.visibility = View.VISIBLE
         login_countdown.setOnCountdownEndListener(this)
@@ -72,7 +68,7 @@ class LoginRegisterActivity : BaseActivity<LoginContract.Presenter>(),
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                val txt = login_code.getText().toString()
+                val txt = login_code.text
                 if (TextUtils.isEmpty(txt)) {
                     login_code_hint.visibility = View.VISIBLE
                 } else {
@@ -111,25 +107,24 @@ class LoginRegisterActivity : BaseActivity<LoginContract.Presenter>(),
 
     }
 
-    fun setImmerseLayout() {
-        setStatusBarTextBlackColor()
-    }
+//    fun setImmerseLayout() {
+//        setStatusBarTextBlackColor()
+//    }
 
     /**
      * 此功能在 android 6.0以上系统适用
      * 设置白底黑字的状态栏
      */
-    private fun setStatusBarTextBlackColor() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            var newUiVisibility = this.window.decorView.systemUiVisibility
-            newUiVisibility = newUiVisibility or View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
-            this.window.decorView.systemUiVisibility = newUiVisibility
-            StatusBarUtils.setColorNoTranslucent(this, ContextCompat.getColor(this, R.color.white))
-        }
-    }
+//    private fun setStatusBarTextBlackColor() {
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+//            var newUiVisibility = this.window.decorView.systemUiVisibility
+//            newUiVisibility = newUiVisibility or View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+//            this.window.decorView.systemUiVisibility = newUiVisibility
+//            StatusBarUtils.setColorNoTranslucent(this, ContextCompat.getColor(this, R.color.white))
+//        }
+//    }
 
 
-    //@OnFocusChange(R.id.login_code)
     override fun onFocusChange(v: View, hasFocus: Boolean) {
         if (hasFocus) {
             login_code_hint.setVisibility(View.GONE)
@@ -143,19 +138,8 @@ class LoginRegisterActivity : BaseActivity<LoginContract.Presenter>(),
         }
     }
 
-
-//    @OnTextChanged(R.id.login_phone)
-//    fun textChangedPhone(s: CharSequence, start: Int, before: Int, count: Int) {
-//        checkEnableLogin()
-//    }
-
-
-
-    //@OnClick(R.id.login_getcode, R.id.login_go, R.id.ll_text, R.id.login_protocal, R.id.login_zhima_lay)
     override fun onClick(v: View) {
         if (v.id == R.id.login_getcode) {
-            //getCode();
-            //LoginRegisterActivityPermissionsDispatcher.checkReceiveSmsWithPermissionCheck(this)
 
             checkReceiveSmsWithPermissionCheck()
 
@@ -209,7 +193,7 @@ class LoginRegisterActivity : BaseActivity<LoginContract.Presenter>(),
 //            zhimaCode = kv.getCode()
 //        }
 
-        presenter!!.loginByVerifyCode(phone, code )
+        presenter!!.login(phone, code )
     }
 
     protected fun getCode() {
@@ -286,7 +270,7 @@ class LoginRegisterActivity : BaseActivity<LoginContract.Presenter>(),
 //
 //    }
 
-    override fun loginByVerifyCodeCallback(apiResult: ApiResult<UserBean>) {
+    override fun loginCallback(apiResult: ApiResult<UserBean>) {
         if (apiResult.resultCode != ApiResultCodeEnum.SUCCESS.code ) {
             toast(apiResult.resultMsg )
             return
@@ -321,27 +305,16 @@ class LoginRegisterActivity : BaseActivity<LoginContract.Presenter>(),
     }
 
     private fun clearLocalData(){
-        SPUtils.getInstance(this,Constants.PREF_FILENAME).writeString( Constants.PREF_USER,"");
+        SPUtils.getInstance(this,Constants.PREF_FILENAME).writeString( Constants.PREF_USER,"")
+        SPUtils.getInstance(this, Constants.PREF_FILENAME).writeInt(Constants.PREF_PLATTYPE , PlatTypeEnum.PINDUODUO.type )
 
         BaseApplication.instance!!.variable.userBean=null
-
+        BaseApplication.instance!!.variable.platType = PlatTypeEnum.PINDUODUO.type
     }
 
     private fun clearCookie() {
         CookieUtils.clearWebViewCookie()
     }
-
-//    fun checkRegCallback(apiResult: ApiResult<Map<String, Boolean>>) {
-//        if (apiResult.resultCode !== ApiResultCodeEnum.SUCCESS.code) {
-//            toast(apiResult.resultMsg )
-//            return
-//        }
-//
-//        isRegister = apiResult.data!!.get("regStatus")
-//        //login_zhima_lay.setEnabled(  !isRegister );
-//        login_zhima_lay.setVisibility(if (isRegister) View.GONE else View.VISIBLE)
-//        login_line2.setVisibility(if (isRegister) View.GONE else View.VISIBLE)
-//    }
 
     /**
      *
@@ -384,6 +357,9 @@ class LoginRegisterActivity : BaseActivity<LoginContract.Presenter>(),
         return dynamicPwd
     }
 
+    override fun registerCallback(apiResult: ApiResult<UserBean>) {
+
+    }
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)

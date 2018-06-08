@@ -8,12 +8,17 @@ import com.huotu.android.couponsleague.mvp.IView
 
 interface LoginContract {
     interface Presenter: IPresenter {
-        fun loginByVerifyCode(phone :String , code :String)
+        fun register(mobile:String, inviteCode:String , smsCode : String)
+
+        fun login(phone :String , code :String)
+
         fun sendVerifyCode(phone:String)
     }
 
     interface View: IView<Presenter> {
-        fun loginByVerifyCodeCallback(apiResult: ApiResult<UserBean>)
+        fun registerCallback(apiResult: ApiResult<UserBean>)
+
+        fun loginCallback(apiResult: ApiResult<UserBean>)
 
         fun sendVerifyCodeCallback(apiResult: ApiResult<Any>)
     }

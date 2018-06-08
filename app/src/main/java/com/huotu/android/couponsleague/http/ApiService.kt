@@ -1,9 +1,7 @@
 package com.huotu.android.couponsleague.http
 
 
-import com.huotu.android.couponsleague.bean.ApiResult
-import com.huotu.android.couponsleague.bean.InitDataBean
-import com.huotu.android.couponsleague.bean.UserBean
+import com.huotu.android.couponsleague.bean.*
 import io.reactivex.Observable
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
@@ -17,19 +15,28 @@ interface ApiService {
 
 
     /**
-     * 根据手机号、验证码 实现用户登录注册逻辑
+     * 根据手机号、邀请码和验证码注册用户
+     */
+    @POST("user/register")
+    @FormUrlEncoded
+    fun register(@Field("mobile") mobile:String,
+                @Field("inviteCode") inviteCode:String,
+                 @Field("verifyCode") verifyCode:String,
+                 @Field("safeCode") safeCode:String="" ):Observable<ApiResult<UserBean>>
+
+
+    /**
+     * 根据手机号、验证码 实现用户登录逻辑
      * @param username  手机号
      * @param verifyCode  验证码
-     * @param inviter 邀请者ID
-     * @param zmfScore 预估芝麻分， 1:550以下 2:550~600 3:600~650 4:650以上
+     * @param safeCode 安全码
      * @return
      */
-    @POST("user/loginByVerifyCode")
+    @POST("user/login")
     @FormUrlEncoded
-    fun loginByVerifyCode(@Field("username") username: String,
+    fun login(@Field("mobile") mobile: String,
                           @Field("verifyCode") verifyCode: String,
-            //@Field("inviter") inviter: Int=0,
-                          @Field("zmfScore") zmfScore: Int=0): Observable<ApiResult<UserBean>>
+                          @Field("safeCode") safeCode: String="" ): Observable<ApiResult<UserBean>>
 
 
     /**
@@ -40,5 +47,19 @@ interface ApiService {
     fun sendVerifyCode(@Field("mobile") mobile: String): Observable<ApiResult<Any>>
 
 
+    /**
+     * 添加收藏
+     */
+    @POST("user/favorite")
+    @FormUrlEncoded
+    fun favorite(@Field("goodsid") goodsid:Long ):Observable<ApiResult<Any>>
+
+
+    /**
+     * 我的收藏
+     */
+    @POST("user/favoriteList")
+    @FormUrlEncoded
+    fun favoriteList(@Field("pageIndex") pageIndex :Long , @Field("pageSize") pageSize :Int=Constants.PAGE_SIZE ):Observable<ApiResult<FavoriteBean>>
 
 }

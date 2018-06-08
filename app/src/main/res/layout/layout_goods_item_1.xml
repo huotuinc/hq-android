@@ -1,22 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:padding="0dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <com.facebook.drawee.view.SimpleDraweeView
         android:id="@+id/good_item_1_logo"
         app:viewAspectRatio="1"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        app:failureImageScaleType="fitXY"
+        app:failureImage="@mipmap/ic_launcher"
+        app:placeholderImageScaleType="fitXY"
+        app:placeholderImage="@mipmap/ic_launcher"
+        app:actualImageScaleType="fitXY"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"/>
 
-    <ImageView
-        android:layout_width="16dp"
-        android:layout_height="16dp"
-        android:src="@mipmap/ic_launcher"/>
+    <!--<ImageView-->
+        <!--android:layout_width="16dp"-->
+        <!--android:layout_height="16dp"-->
+        <!--android:src="@mipmap/ic_launcher"/>-->
 
     <TextView
         android:textSize="14sp"
@@ -27,11 +34,12 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         android:ellipsize="end"
-        android:text="      阿萨德法守dafsfsdfasdfa阿士大夫撒发顺丰阿是打发是发法撒法阿斯顿发生地法法师范德萨发"
+        android:text="阿萨德法守dafsfsdfasdfa阿士大夫撒发顺丰阿是打发是发法撒法阿斯顿发生地法法师范德萨发"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
     <TextView
+        android:layout_marginTop="5dp"
         android:text="￥21.55"
         android:id="@+id/good_item_1_price"
         android:layout_width="wrap_content"
@@ -48,49 +56,71 @@
 
     <TextView
         android:id="@+id/good_item_1_final_label"
+        app:layout_constraintTop_toBottomOf="@id/good_item_1_price"
+        app:layout_constraintLeft_toLeftOf="@id/good_item_1_price"
         android:text="券后"
+        android:textColor="@color/black"
+        android:textSize="16sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
     <TextView
         android:id="@+id/good_item_1_final_price"
         android:text="￥4.15"
+        android:textColor="#fe4c55"
+        android:textSize="16sp"
+        android:textStyle="bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/good_item_1_price"
-        app:layout_constraintLeft_toLeftOf="@id/good_item_1_final_label"/>
+        app:layout_constraintLeft_toRightOf="@id/good_item_1_final_label"/>
 
     <ImageView
         android:id="@+id/good_item_1_favorite"
-        android:layout_width="16dp"
-        android:layout_height="16dp"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:src="@mipmap/favorite_gray"
         app:layout_constraintTop_toTopOf="@id/good_item_1_final_label"
         app:layout_constraintRight_toRightOf="parent"/>
 
     <TextView
+        android:layout_marginTop="4dp"
         android:id="@+id/good_item_1_coupon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="4券"
-        android:padding="5dp"
+        android:text="券￥4"
+        android:textColor="#fe4c55"
+        android:background="@drawable/shape_quan_bg"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:paddingTop="2dp"
+        android:paddingBottom="2dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/good_item_1_final_label"/>
 
     <LinearLayout
         android:gravity="center"
+        android:background="@drawable/shape_quan_bg"
         app:layout_constraintTop_toTopOf="@id/good_item_1_coupon"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/good_item_1_coupon"
         android:orientation="horizontal"
+        android:layout_marginLeft="8dp"
+        android:paddingTop="2dp"
+        android:paddingBottom="2dp"
+        android:paddingRight="8dp"
+        android:paddingLeft="8dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
         <TextView
             android:text="分享赚"
+            android:textColor="#fe4c55"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <ImageView
             android:layout_width="16dp"
-            android:layout_height="16dp"
-            android:src="@mipmap/ic_launcher"/>
+            android:src="@mipmap/zhuan2"
+            android:layout_height="16dp" />
         <TextView
+            android:textColor="#fe4c55"
             android:text="1.2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />

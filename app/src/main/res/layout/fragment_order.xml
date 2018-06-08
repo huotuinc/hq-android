@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragment.OrderFragment">
+
+    <com.huotu.android.couponleague.widget.SwiperRefreshView
+        android:id="@+id/order_refreshview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+      <android.support.v7.widget.RecyclerView
+          android:background="#f2f2f2"
+          android:id="@+id/order_recyclerview"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"/>
+    </com.huotu.android.couponleague.widget.SwiperRefreshView>
+
+</FrameLayout>

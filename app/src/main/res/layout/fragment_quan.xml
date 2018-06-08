@@ -41,7 +41,7 @@
         app:tabIndicatorColor="#fe4c55"
         app:tabIndicatorHeight="2dp"
         app:tabTextColor="#383838"
-        app:tabTextAppearance="@android:style/TextAppearance.DeviceDefault.Medium"
+        app:tabTextAppearance="@android:style/TextAppearance.DeviceDefault"
         app:tabPaddingStart="5dp"
         app:tabPaddingEnd="5dp"
         android:layout_marginRight="5dp"

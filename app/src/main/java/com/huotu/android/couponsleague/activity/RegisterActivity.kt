@@ -14,10 +14,7 @@ import cn.iwgang.countdownview.CountdownView
 import com.huotu.android.couponsleague.R
 import com.huotu.android.couponsleague.base.BaseActivity
 import com.huotu.android.couponsleague.base.BaseApplication
-import com.huotu.android.couponsleague.bean.ApiResult
-import com.huotu.android.couponsleague.bean.ApiResultCodeEnum
-import com.huotu.android.couponsleague.bean.Constants
-import com.huotu.android.couponsleague.bean.UserBean
+import com.huotu.android.couponsleague.bean.*
 import com.huotu.android.couponsleague.mvp.contract.LoginContract
 import com.huotu.android.couponsleague.mvp.presenter.LoginPresenter
 import com.huotu.android.couponsleague.receiver.SmsReceiver
@@ -106,22 +103,22 @@ class RegisterActivity : BaseActivity<LoginContract.Presenter>(),
 
     }
 
-    fun setImmerseLayout() {
-        setStatusBarTextBlackColor()
-    }
+//    fun setImmerseLayout() {
+//        setStatusBarTextBlackColor()
+//    }
 
     /**
      * 此功能在 android 6.0以上系统适用
      * 设置白底黑字的状态栏
      */
-    private fun setStatusBarTextBlackColor() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            var newUiVisibility = this.window.decorView.systemUiVisibility
-            newUiVisibility = newUiVisibility or View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
-            this.window.decorView.systemUiVisibility = newUiVisibility
-            StatusBarUtils.setColorNoTranslucent(this, ContextCompat.getColor(this, R.color.white))
-        }
-    }
+//    private fun setStatusBarTextBlackColor() {
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+//            var newUiVisibility = this.window.decorView.systemUiVisibility
+//            newUiVisibility = newUiVisibility or View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+//            this.window.decorView.systemUiVisibility = newUiVisibility
+//            StatusBarUtils.setColorNoTranslucent(this, ContextCompat.getColor(this, R.color.white))
+//        }
+//    }
 
 
     //@OnFocusChange(R.id.register_code)
@@ -138,48 +135,47 @@ class RegisterActivity : BaseActivity<LoginContract.Presenter>(),
         }
     }
 
-
-//    @OnTextChanged(R.id.login_phone)
-//    fun textChangedPhone(s: CharSequence, start: Int, before: Int, count: Int) {
-//        checkEnableLogin()
-//    }
-
-
-
-    //@OnClick(R.id.login_getcode, R.id.login_go, R.id.ll_text, R.id.login_protocal, R.id.login_zhima_lay)
     override fun onClick(v: View) {
-        if (v.id == R.id.register_getcode) {
-            //getCode();
-            //LoginRegisterActivityPermissionsDispatcher.checkReceiveSmsWithPermissionCheck(this)
-
-            checkReceiveSmsWithPermissionCheck()
-
-        } else if (v.id == R.id.register_go) {
-            go()
-        } else if (v.id == R.id.ll_text) {
-            isAgress = !isAgress
-            register_agress.setImageResource(if (isAgress) R.mipmap.protocal else R.mipmap.protocal_unselected)
-        } else if (v.id == R.id.register_protocal) {
-            KeybordUtils.closeKeyboard(this)
-            var url = if(BaseApplication.instance!!.variable.initDataBean==null) "" else BaseApplication.instance!!.variable.initDataBean!!.recycle_list_url
-            newIntent<WebActivity>(Constants.INTENT_URL, url )
-        }else if(v.id==R.id.register_back){
-            finish()
+        when(v.id) {
+            R.id.register_getcode -> {
+                checkReceiveSmsWithPermissionCheck()
+            }
+            R.id.register_go-> {
+                go()
+            }
+            R.id.ll_text-> {
+                isAgress = !isAgress
+                register_agress.setImageResource(if (isAgress) R.mipmap.protocal else R.mipmap.protocal_unselected)
+            }
+            R.id.register_protocal-> {
+                KeybordUtils.closeKeyboard(this)
+                var url = if (BaseApplication.instance!!.variable.initDataBean == null) "" else BaseApplication.instance!!.variable.initDataBean!!.recycle_list_url
+                newIntent<WebActivity>(Constants.INTENT_URL, url)
+            }
+            R.id.register_back->{
+                finish()
+            }
         }
     }
 
-    protected fun go() {
+    private fun go() {
         val phone = register_phone.textWithoutSpace.trim()
         val inviteCode = register_invite_code.text.toString().trim()
-        val code = register_code.text.toString().trim()
+        val smsCode = register_code.text.toString().trim()
         if (phone.isEmpty()) {
             register_phone.error ="请输入手机号码"
             register_phone.requestFocus()
             KeybordUtils.openKeybord(this , register_phone )
             return
         }
+        if (inviteCode.isEmpty()) {
+            register_invite_code.error ="请输入邀请码"
+            register_invite_code.requestFocus()
+            KeybordUtils.openKeybord(this , register_invite_code )
+            return
+        }
 
-        if (TextUtils.isEmpty(code)) {
+        if (TextUtils.isEmpty(smsCode)) {
             register_code.error ="请输入短信验证码"
             register_code.requestFocus()
             KeybordUtils.openKeybord(this ,register_code)
@@ -193,22 +189,10 @@ class RegisterActivity : BaseActivity<LoginContract.Presenter>(),
             return
         }
 
-//        if (!isRegister && login_zhima.getTag() == null) {
-//            toast("请选择芝麻信用分")
-//            selectZhima()
-//            return
-//        }
-
-//        var zhimaCode = 0
-//        if (!isRegister && login_zhima.getTag() != null) {
-//            val kv = login_zhima.getTag() as KeyValue
-//            zhimaCode = kv.getCode()
-//        }
-
-        presenter!!.loginByVerifyCode(phone, code )
+        presenter!!.register(phone, inviteCode ,  smsCode )
     }
 
-    protected fun getCode() {
+    private fun getCode() {
         val phone = register_phone.textWithoutSpace.trim()
         if (phone.isEmpty()) {
             register_phone.error ="请输入手机号码"
@@ -230,9 +214,9 @@ class RegisterActivity : BaseActivity<LoginContract.Presenter>(),
     internal fun checkEnableLogin() {
         val phone = register_phone.textWithoutSpace.trim()
         val inviteCode = register_invite_code.text.trim()
-        val code = register_code.text.toString().trim()
+        val smsCode = register_code.text.toString().trim()
         //boolean isPhone = loginPhone.isContentCheck();
-        if (phone.length >= 11 && !TextUtils.isEmpty(code) && !TextUtils.isEmpty(inviteCode) ) {
+        if (phone.length >= 11 && !TextUtils.isEmpty(smsCode) && !TextUtils.isEmpty(inviteCode) ) {
             register_go.setBackgroundResource(R.drawable.style_login_button)
             register_go.isEnabled =true
         } else {
@@ -265,30 +249,23 @@ class RegisterActivity : BaseActivity<LoginContract.Presenter>(),
         KeybordUtils.openKeybord(this , register_code)
     }
 
-//    fun RegisterCallback(userBean: UserBean) {
-//
-//    }
 
 //    fun updatePasswordCallback(apiResult: ApiResult<Any>) {
 //
 //    }
 
-    override fun loginByVerifyCodeCallback(apiResult: ApiResult<UserBean>) {
+    override fun registerCallback(apiResult: ApiResult<UserBean>) {
         if (apiResult.resultCode != ApiResultCodeEnum.SUCCESS.code ) {
             toast(apiResult.resultMsg )
             return
         }
-
         BaseApplication.instance!!.variable.userBean = apiResult.data
-        //BaseApplication.getInstance().variable.yxUserBean = apiResult.data
         SPUtils.getInstance(this, Constants.PREF_FILENAME).writeString( Constants.PREF_USER, GsonUtils.gson!!.toJson(apiResult.data))
-        //SPUtils.getInstance(this, Constants.PREF_FILENAME).writeString( Constants.PREF_YX_USER, GsonUtils.gson!!.toJson(apiResult.data))
-        this.finish()
-        //EventBus.getDefault().post(LoginSuccessEvent(apiResult.getData().getUserInfo()))
-        //startActivity(MainActivity::class.java)
-        //skipIntent<MainActivity>()
-
         CookieUtils.setWebViewCookie()
+        this.finish()
+    }
+
+    override fun loginCallback(apiResult: ApiResult<UserBean>) {
     }
 
     override fun showProgress(msg: String) {
@@ -309,25 +286,14 @@ class RegisterActivity : BaseActivity<LoginContract.Presenter>(),
 
     private fun clearLocalData(){
         SPUtils.getInstance(this,Constants.PREF_FILENAME).writeString( Constants.PREF_USER,"")
+        SPUtils.getInstance(this,Constants.PREF_FILENAME).writeInt(Constants.PREF_PLATTYPE , PlatTypeEnum.PINDUODUO.type)
         BaseApplication.instance!!.variable.userBean=null
-
+        BaseApplication.instance!!.variable.platType=PlatTypeEnum.PINDUODUO.type
     }
 
     private fun clearCookie() {
         CookieUtils.clearWebViewCookie()
     }
-
-//    fun checkRegCallback(apiResult: ApiResult<Map<String, Boolean>>) {
-//        if (apiResult.resultCode !== ApiResultCodeEnum.SUCCESS.code) {
-//            toast(apiResult.resultMsg )
-//            return
-//        }
-//
-//        isRegister = apiResult.data!!.get("regStatus")
-//        //register_zhima_lay.setEnabled(  !isRegister );
-//        register_zhima_lay.setVisibility(if (isRegister) View.GONE else View.VISIBLE)
-//        register_line2.setVisibility(if (isRegister) View.GONE else View.VISIBLE)
-//    }
 
     /**
      *

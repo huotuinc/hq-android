@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:clipToPadding="true"
+    tools:context=".activity.OrderActivity">
+
+    <include layout="@layout/layout_header2"
+    android:id="@+id/order_header"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:background="@color/white"
+        android:id="@+id/order_filter_bar"
+        app:layout_constraintTop_toBottomOf="@id/order_header"
+        android:paddingLeft="12dp"
+        android:paddingRight="10dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/order_filter"
+            android:textColor="#4b4b4b"
+            android:text="拼多多订单"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:text="不限"
+            android:drawablePadding="5dp"
+            android:textColor="#4b4b4b"
+            android:id="@+id/order_filter_button"
+            android:drawableRight="@mipmap/down"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <View
+        android:id="@+id/order_line"
+        app:layout_constraintTop_toBottomOf="@id/order_filter_bar"
+        android:background="#EEEEEE"
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+
+    <android.support.design.widget.TabLayout
+        android:background="@color/white"
+        app:layout_constraintTop_toBottomOf="@id/order_line"
+        android:id="@+id/order_tablayout"
+        android:layout_width="match_parent"
+        android:layout_height="32dp"
+        app:tabMode="fixed"
+        app:tabGravity="center"
+        app:tabIndicatorColor="#ea1720"
+        app:tabIndicatorHeight="2dp"
+        app:tabTextColor="#4b4b4b"
+        app:tabSelectedTextColor="#ea1720"/>
+
+    <View
+        android:id="@+id/order_space"
+        app:layout_constraintTop_toBottomOf="@id/order_tablayout"
+        android:background="#f2f2f2"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"/>
+
+    <android.support.v4.view.ViewPager
+        app:layout_constraintTop_toBottomOf="@id/order_space"
+        android:id="@+id/order_viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"/>
+
+</android.support.constraint.ConstraintLayout>

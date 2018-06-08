@@ -1,14 +1,15 @@
 package com.huotu.android.couponsleague.bean
 
 object Constants {
-    val OS_TYPE:String="android"
+    val OS_TYPE:Int=2  //系统类型 miniprogram->0；ios->1；android->2；h5->3
     val APP_SECRET:String="4165a8d240b29af3f41818d10599d0d1"
     val MerchantId:String="1"
-    val ChannelId:String="recycleapp"
+
 
     val READ_TIMEOUT :Long= 15
     val CONNECT_TIMEOUT :Long= 15
     val WRITE_TIMEOUT :Long= 15
+    val PAGE_SIZE=10
     //val BASE_URL:String ="http://192.168.1.210:8082/api/"
     val BASE_URL :String="http://youxin.51huotao.com/api/"
     //val YOUXIN_BASE_URL :String="http://192.168.1.210:8082/api/"
@@ -42,6 +43,7 @@ object Constants {
     var PREF_USER = "pref_user"
     val PREF_SEARCH_FILENAME="pref_filename_search"
     var PREF_KEY="pref_key"
+    val PREF_PLATTYPE="pref_plattype"
     //var PREF_YX_USER = "pref_yx_user"
 
     val ACTION_AUTH_FINISH="com.huotu.android.phonerecycle.action_auth_finish"

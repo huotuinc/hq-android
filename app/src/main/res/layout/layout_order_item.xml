@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp"
+    android:background="@color/white"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/order_item_time"
+        android:textSize="14sp"
+        android:textColor="#767676"
+        android:singleLine="true"
+        android:id="@+id/order_item_orderNo"
+        android:text="订单号:15464-46464646554288825655446566"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content" />
+    <TextView
+        app:layout_constraintBaseline_toBaselineOf="@id/order_item_orderNo"
+        app:layout_constraintRight_toRightOf="parent"
+        android:id="@+id/order_item_time"
+        android:layout_width="wrap_content"
+        android:text="2018-05-06下单"
+        android:textSize="12sp"
+        android:textColor="#8d8d8d"
+        android:layout_height="wrap_content" />
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/order_item_image"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@id/order_item_orderNo"
+        app:layout_constraintLeft_toLeftOf="@id/order_item_orderNo"
+        app:failureImage="@mipmap/ic_launcher"
+        app:failureImageScaleType="fitCenter"
+        app:placeholderImage="@mipmap/ic_launcher"
+        app:placeholderImageScaleType="fitCenter"
+        app:actualImageScaleType="fitCenter"
+        android:layout_width="70dp"
+        android:layout_height="70dp" />
+
+    <TextView
+        android:layout_marginTop="2dp"
+        android:id="@+id/order_item_name"
+        app:layout_constraintLeft_toRightOf="@id/order_item_image"
+        app:layout_constraintTop_toTopOf="@id/order_item_image"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_width="0dp"
+        android:textSize="14sp"
+        android:maxLines="3"
+        android:text="asdfa阿阿阿是打发是发三斯顿发生阿是打发阿斯顿发大水发啥啊大厦法定发送发送的发送发打发阿是打发阿斯发"
+        android:ellipsize="end"
+        android:textColor="#3d3d3d"
+        android:layout_marginLeft="10dp"
+        android:layout_height="wrap_content" />
+
+    <View
+        app:layout_constraintTop_toBottomOf="@id/order_item_image"
+        android:layout_marginTop="10dp"
+        android:id="@+id/order_item_line"
+        android:background="#e1e1e1"
+        android:layout_width="match_parent"
+        android:layout_height="1px" />
+
+    <TextView
+        android:id="@+id/order_item_time2"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@id/order_item_line"
+        app:layout_constraintRight_toRightOf="parent"
+        android:text="2018-05-26 已成团"
+        android:textColor="#8d8d8d"
+        android:textSize="12sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+
+    <LinearLayout
+        android:layout_marginTop="3dp"
+        app:layout_constraintTop_toBottomOf="@id/order_item_time2"
+        app:layout_constraintRight_toRightOf="parent"
+        android:id="@+id/order_item_lay"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/order_item_benefit_"
+            android:textSize="14sp"
+            android:textColor="#8d8d8d"
+            android:text="消费￥13.90"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/order_item_benefit_label"
+            android:textSize="14sp"
+            android:textColor="#ea1720"
+            android:text="佣金"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <ImageView
+            android:id="@+id/order_item_zhuan"
+            android:src="@mipmap/zhuan2"
+            android:layout_width="16dp"
+            android:layout_height="16dp" />
+
+        <TextView
+            android:id="@+id/order_item_benefit"
+            android:textSize="14sp"
+            android:textColor="#ea1720"
+            android:text="1.25"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>
